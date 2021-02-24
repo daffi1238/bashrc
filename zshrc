@@ -100,7 +100,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+##########################Customs Alias###############################################
 #Command to get ready the subfolder neccesary to start pentesting
-alias start_pentest='mkdir src && mkdir exploits && mkdir nmap && tmp && content'
- 
-alias extractPortsTCP='nmap -p- -sS --min-rate 5000 -vvv $1 -n -oG grepeable | grep /tcp > scan.txt'
+alias start_pentest='mkdir -p src && mkdir -p exploits && mkdir -p nmap && mkdir -p tmp && mkdir -p content'
+
+alias aaa='function extractPortsTCP(){
+  nmap -p- -sS --min-rate 5000 -vvv -n 127.0.0.1 -oG grepeable | grep /tcp  -v "Discovered" > scan.txt
+}
+export -f extractPortsTCP'
